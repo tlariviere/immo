@@ -1,0 +1,137 @@
+<html>
+
+<head>
+  <script type="text/javascript">
+  let nodesSurface = [];
+
+const checkSurface = (node) => {
+  console.log(node.parentElement?.className)
+  if (
+    node.parentElement &&
+    node.parentElement.classList.contains("listing-city")
+  ) {
+    nodesSurface.push({ node, match: node.textContent });
+  }
+};
+
+const highlightSurface = (node, match) => {
+  node.textContent = "foobar";
+  // if (node.parentElement) {
+  //   const html = node.parentElement.innerHTML.replace(
+  //     match,
+  //     `<span style="display:inline-block;border-radius:4px;color:#f9fafb;padding:1px 2px;background-color:#22c55e">${match}</span>`
+  //   );
+  //   node.parentElement.innerHTML = html;
+  // }
+  // if (node.parentElement) {
+  //   const html = node.parentElement.innerHTML.replace(
+  //     match,
+  //     `<span style="display:inline-block;border-radius:4px;color:#f9fafb;padding:1px 2px;background-color:#22c55e">${match}</span>`
+  //   );
+  //   node.parentElement.innerHTML = html;
+  // }
+};
+
+    
+    
+      function browseNode(node) {
+      switch (node?.nodeType) {
+        case 1:
+          for (const child of node.childNodes) {
+            browseNode(child);
+          }
+          break;
+        case 3:
+          if (node.textContent) {
+            checkSurface(node);
+          }
+          break;
+      }
+    }
+
+    const highlightTexts = () => {
+  // for (const { node, matches } of nodesHighlight) {
+  //   highlightText(node, matches);
+  // }
+  // nodesHighlight = [];
+  for (const { node, match } of nodesSurface) {
+    highlightSurface(node, match);
+  }
+  nodesSurface = [];
+};
+
+const main = (node) => {
+  browseNode(node);
+  highlightTexts();
+};
+
+window.addEventListener("load", async () => {
+      console.log("loaded");
+      main(document.body);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="listing-item-body">
+    <div class="listing-labels">
+                                    <div class="listing-label label--red">Exclusivité</div>
+                            </div>
+    <div class="listing-item-content">
+        <div class="listing-price">
+            <div class="listing-price-value">
+                                    165&nbsp;000&nbsp;€
+            </div>
+                <a class="listing-partner ca-monthly" href="https://e-immobilier.credit-agricole.fr/simulca/?ORI=avendrealouer&amp;at_medium=affiliate&amp;at_campaign=12&amp;at_type=partenariat&amp;at_identifier=avendrealouer&amp;at_format=Lien_Calcul_Mensualites" rel="nofollow" target="_blank">Calculer mes mensualités</a>
+        </div>
+
+        
+        <div class="listing-type">
+Maison            </div>
+        <div class="listing-characteristics">
+                <div class="listing-characteristics-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <use xlink:href="#icon-area" x="0" y="0"></use>
+                    </svg>
+                    <span>103  m²</span>
+            </div>
+                                <div class="listing-characteristics-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <use xlink:href="#icon-rooms" x="0" y="0"></use>
+                    </svg>
+                    <span>4  p.</span>
+                    
+                </div>
+                                <div class="listing-characteristics-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <use xlink:href="#icon-bed" x="0" y="0"></use>
+                    </svg>
+                    <span>2  ch.</span>
+                    
+                </div>
+
+        </div>
+        
+
+    <div class="listing-city">mayet</div>
+    </div>
+    <div class="listing-contact">
+        <button class="btn-favorite no-favorite-btn" data-id="2354169867">
+            <svg class="favorite-svg hidden" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 20 22">
+                <use xlink:href="#icon-saved" x="0" y="0"></use>
+            </svg>
+            <svg class="no-favorite-svg " xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 20 22">
+                <use xlink:href="#icon-save" x="0" y="0"></use>
+            </svg>
+        </button>
+                <button class="btn-contact sendMessage" data-href="#2354169867">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18">
+                        <use xlink:href="#icon-letter" x="0" y="0"></use>
+                    </svg>
+                    Contacter
+                </button>
+    </div>
+</div>
+</body>
+
+</html>
