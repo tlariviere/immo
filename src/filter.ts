@@ -16,7 +16,6 @@ const selection = [
   "Ecouves",
   "Châteauneuf-En-Thymerais",
   "Montécôt",
-  "Saint-Evroult",
   "Sillé",
   "Petite Charnie",
 ];

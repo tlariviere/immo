@@ -9,7 +9,7 @@ const cache = new NodeCache({
   stdTTL: 24 * 60 * 60, // 24h
 });
 
-const data = readGeoJSON("data/public_forest.geojson");
+const data = readGeoJSON("data/public_forest_simplified.geojson");
 
 const app = express();
 const port = 3000;

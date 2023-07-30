@@ -18,7 +18,7 @@ const main = async () => {
     throw new Error("Not found");
   }
 
-  const data = await readGeoJSON("data/public_forest.geojson");
+  const data = await readGeoJSON("data/public_forest_simplified.geojson");
   console.log(distanceToPolygon(data, point));
 };
 
