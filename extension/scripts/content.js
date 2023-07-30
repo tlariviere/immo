@@ -28,7 +28,7 @@ const appendBadge = (node, data, className = "dist-badge") => {
     span.style.color = "#111827";
     span.classList.add(className);
     span.textContent = `${data.distance.toFixed(1)}km (${data.label})`;
-    if (data.distance <= 5) {
+    if (data.distance <= 3) {
       span.style.backgroundColor = "#22c55e";
     } else if (data.distance <= 10) {
       span.style.backgroundColor = "#fb923c";
