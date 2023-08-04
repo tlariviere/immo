@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  fetch(`http://localhost:3000?q=${encodeURI(request.query)}`)
+  fetch(`http://localhost:5000?q=${encodeURI(request.query)}`)
     .then((res) => {
       if (res.ok) {
         return res.json();
