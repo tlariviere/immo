@@ -3,6 +3,7 @@ import "geojson";
 import { featureCollection } from "@turf/helpers";
 import { readGeoJSON } from "./lib/geojson";
 
+// Location
 const selection = [
   "Perseigne",
   "Bellême",
@@ -10,15 +11,29 @@ const selection = [
   "Réno-Valdieu",
   "Perche Et De La Trappe",
   "Moulins-Bonsmoulins",
-  "Gouffern",
   "Andaines",
   "Senonches",
   "Ecouves",
-  "Châteauneuf-En-Thymerais",
-  "Montécôt",
-  "Sillé",
-  "Petite Charnie",
+  "Arche De La Nature",
 ];
+
+// Achat
+// const selection = [
+//   "Perseigne",
+//   "Bellême",
+//   "Bourse",
+//   "Réno-Valdieu",
+//   "Perche Et De La Trappe",
+//   "Moulins-Bonsmoulins",
+//   "Gouffern",
+//   "Andaines",
+//   "Senonches",
+//   "Ecouves",
+//   "Châteauneuf-En-Thymerais",
+//   "Montécôt",
+//   "Sillé",
+//   "Petite Charnie",
+// ];
 
 const sanityzeFeatures = (
   data: GeoJSON.FeatureCollection<GeoJSON.Polygon | GeoJSON.MultiPolygon>
@@ -50,6 +65,7 @@ const main = async () => {
   ]);
 
   await fs.writeFile("data/public_forest.geojson", JSON.stringify(merged));
+  // don't forget to simplify geometries with https://mapshaper.org/ (1.7%)
 };
 
 main()

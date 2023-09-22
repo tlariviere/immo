@@ -17,6 +17,19 @@ const removeDistBadges = () => {
 
 const fetchDist = async (query) => chrome.runtime.sendMessage({ query });
 
+const distanceThresholds = {
+  Perseigne: [4, 10],
+  Bellême: [4, 10],
+  Bourse: [3, 8],
+  "Réno-Valdieu": [3, 10],
+  "Perche Et De La Trappe": [4, 10],
+  "Moulins-Bonsmoulins": [3, 5],
+  Andaines: [3, 5],
+  Senonches: [3, 8],
+  Ecouves: [4, 10],
+  "Arche De La Nature": [3, 5],
+};
+
 const appendBadge = (node, data, className = "dist-badge") => {
   if (data && typeof data === "object" && typeof data.distance === "number") {
     const span = document.createElement("span");
@@ -28,9 +41,13 @@ const appendBadge = (node, data, className = "dist-badge") => {
     span.style.color = "#111827";
     span.classList.add(className);
     span.textContent = `${data.distance.toFixed(1)}km (${data.label})`;
-    if (data.distance <= 3) {
+    const key = Object.keys(distanceThresholds).find((key) =>
+      data.label.includes(key)
+    );
+    const thresholds = distanceThresholds[key] ?? [3, 10];
+    if (data.distance <= thresholds[0]) {
       span.style.backgroundColor = "#22c55e";
-    } else if (data.distance <= 10) {
+    } else if (data.distance <= thresholds[1]) {
       span.style.backgroundColor = "#fb923c";
     } else {
       span.style.backgroundColor = "#ef4444";
