@@ -27,7 +27,6 @@ const distanceThresholds = {
   Andaines: [3, 5],
   Senonches: [3, 8],
   Ecouves: [4, 10],
-  "Arche De La Nature": [3, 5],
 };
 
 const appendBadge = (node, data, className = "dist-badge") => {

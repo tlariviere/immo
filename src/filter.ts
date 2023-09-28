@@ -14,7 +14,6 @@ const selection = [
   "Andaines",
   "Senonches",
   "Ecouves",
-  "Arche De La Nature",
 ];
 
 // Achat
@@ -65,7 +64,7 @@ const main = async () => {
   ]);
 
   await fs.writeFile("data/public_forest.geojson", JSON.stringify(merged));
-  // don't forget to simplify geometries with https://mapshaper.org/ (1.7%)
+  // don't forget to simplify geometries with https://mapshaper.org/ (Visvaligam / weighted area, 1.7%)
 };
 
 main()
